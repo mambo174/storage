@@ -1,0 +1,74 @@
+{
+	"time": "2023-03-22T13:27:12+05:00",
+	"id": "5c15ff24-ca9c-40c5-923e-4a776bc3729d",
+	"clientInfo": {
+		"platformType": "Windows_x86",
+		"appVersion": "8.3.21.1624",
+		"appName": "1CV8C",
+		"systemInfo": {
+			"osVersion": "Microsoft Windows 7 version 6.1 Service Pack 1 (Build 7601)",
+			"fullRAM": 2146942976,
+			"freeRAM": 608346112,
+			"processor": "GenuineIntel Intel64 Family 15 Model 6 Stepping 1 2100 MHz",
+			"clientID": "27fdc422-1a1a-460b-9461-4f061a444532"
+		}
+	},
+	"sessionInfo": {
+		"userName": "Бухгалтер",
+		"dataSeparation": "+,+",
+		"platformInterfaceLanguageCode": "ru_RU",
+		"configurationInterfaceLanguageCode": "ru",
+		"localeCode": "ru_RU"
+	},
+	"infoBaseInfo": {
+		"localeCode": "ru_RU"
+	},
+	"serverInfo": {
+		"appVersion": "8.3.21.1624",
+		"type": "Linux_x86_64",
+		"dbms": "PostgreSQL"
+	},
+	"configInfo": {
+		"name": "БухгалтерияДляКазахстана",
+		"description": "Бухгалтерия для Казахстана, редакция 3.0, разработка для Казахстана: «1С-Рейтинг» (3.0.47.1) (http:\/\/1c.kz\/v8\/RegionalSolutions_KZ_BUH.php)\nCopyright (С) ООО \"1C\", 2007-2023. Все права защищены.\n(http:\/\/www.1c.ru\/)",
+		"version": "3.0.47.1",
+		"compatibilityMode": "Version8_3_17",
+		"hash": "84e9bbba6fca9a45a48c6c5ce833b8fc00000000",
+		"changeEnabled": true,
+		"extentions": [
+			[
+				"E f 00 00023405",
+				"4fe1e92c720d5d09d48c8b0eb5e6c3ad0e3d6a2e"
+			],
+			[
+				"E f 00 00023261",
+				"f89b94a917c886c097ed357593acdf1857253875"
+			],
+			[
+				"E f 00 00023292",
+				"b2cb0b93cd8e52ce25f1b1db1e80d9c4b0c12501"
+			]
+		]
+	},
+	"errorInfo": {
+		"systemErrorInfo": {
+			"clientStack": "core83.dll:0x00079655 rtrsrvc.dll:0x00127DAF vrscore.dll:0x0001F186 vrscore.dll:0x0002017F mngui.dll:0x0010BF1B mngui.dll:0x0018F57C mngui.dll:0x00173482 mngui.dll:0x00259DF7 bsl.dll:0x00020079 bsl.dll:0x000462C1 bsl.dll:0x00044216 bsl.dll:0x00044671 bsl.dll:0x00020327 bsl.dll:0x000200C8 bsl.dll:0x00019A99 bsl.dll:0x00019C58 mngui.dll:0x00173FF2 mngui.dll:0x00174345 mngui.dll:0x0017259E mngcore.dll:0x004E97E4 mngui.dll:0x001A837A mngui.dll:0x001E24FF mngui.dll:0x004C7D9E frame.dll:0x0015276A frame.dll:0x001556C8 frame.dll:0x0014136F frame.dll:0x00140498 frame.dll:0x001449F0 frame.dll:0x00149030 frame.dll:0x001446E2 frame.dll:0x0013ED36 wbase83.dll:0x0002DD05 wbase83.dll:0x00021792 wbase83.dll:0x00021391 wbase83.dll:0x00020C7E wbase83.dll:0x0002098A wbase83.dll:0x0001345E wbase83.dll:0x00013596 frame.dll:0x0009C9B5 frame.dll:0x0009A37B mngcln.dll:0x00056802 mngcln.dll:0x00056091 1cv8c.exe:0x0000B959 1cv8c.exe:0x0000F0EA core83.dll:0x00266E27 core83.dll:0x002693CE 1cv8c.exe:0x000C0A96 kernel32.dll:0x00000000 unknown:0x00000000 unknown:0x00000000 ",
+			"clientStackHash": "5E1A6F5C9AA71F26BEB52304E6D84AE9",
+			"serverStack": "rserver:0x0000000000579627 vrsbase:0x00000000001290F8 vrsbase:0x0000000000131006 rserver:0x000000000049A5FD rserver:0x00000000005DB378 vrsbase:0x0000000000126210 rserver:0x00000000005DDAD5 rserver:0x00000000005DF605 rtrsrvc:0x000000000033F394 rtrsrvc:0x000000000043386E rtrsrvc:0x00000000004287D8 rtrsrvc:0x000000000042E9DA rtrsrvc:0x000000000042ECFF rtrsrvc:0x000000000042F3C0 rtrsrvc:0x000000000041A73D rscalls:0x0000000000022E85 rscalls:0x00000000000239E9 core83:0x0000000000659831 core83:0x0000000000659876 core83:0x00000000004477D5 libpthread.so:0x0000000000000000 libc.so:0x0000000000000000 ",
+			"serverStackHash": "E8A2D462C392EE300F9203DA56649CDC"
+		},
+		"applicationErrorInfo": {
+			"errors": [
+				[
+					"На сервере 1С:Предприятия произошла неисправимая ошибка. Приложение будет закрыто",
+					[],
+					"",
+					""
+				]
+			]
+		}
+	},
+	"screenshot": {
+		"file": "screenshot.png"
+	}
+}

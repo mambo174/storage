@@ -1,0 +1,212 @@
+body{
+    width: 90%;
+}
+button{
+    border: 0;
+}
+.row-new {
+    display: flex;
+    flex-wrap: nowrap;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+  }
+h1{
+    color: #3564a9;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+#app{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#login{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.list__file{
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-wrap: nowrap;
+
+}
+.p_list__file{
+    display: flex;
+    justify-content: center;
+  }
+  
+.login_form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#create__folder, #load__file{
+    display: none;
+}
+.modal-editor{
+  display: none; /* скрыт по умолчанию */
+  align-items: center;
+  /* темный фон при открытии модалки должен быть на всю страницу */
+  position: fixed; 
+  z-index: 1; /* поверх всех элементов */
+  left: 0;
+  top: 0;
+  width: 100vw; /* полная ширина */
+  height: 100vh; /* полная высота */
+  background-color: rgba(0,0,0,0.4); /* цвет фона - прозрачный черный */
+
+}
+.modal {
+    display: none; /* скрыт по умолчанию */
+    /* темный фон при открытии модалки должен быть на всю страницу */
+    position: fixed; 
+    z-index: 1; /* поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100vw; /* полная ширина */
+    height: 100vh; /* полная высота */
+    background-color: rgba(0,0,0,0.4); /* цвет фона - прозрачный черный */
+  }
+  
+  /* само модальное окно с контентом */
+  .modal-editor_content {
+    background-color: #fff;
+    /* окно будет находится по центру по горизонтали и с отступом сверху в 100 px */
+    margin: 100px auto; 
+    padding: 20px;
+    width: auto; 
+    font-size: 20px;
+    /* разнесем текст и кнопоку по краям окна */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .modal-content
+  {
+    background-color: #fff;
+    /* окно будет находится по центру по горизонтали и с отступом сверху в 100 px */
+    margin: 100px auto; 
+    padding: 20px;
+    width: 50%; 
+    font-size: 20px;
+    /* разнесем текст и кнопоку по краям окна */
+    display: flex;
+    justify-content: space-between;
+   }
+  
+  span {
+    cursor: pointer;
+  }
+  .profile{
+    display: grid;
+    width: 20%;
+    justify-content: start;
+  }
+
+  #top-panel{
+    width: auto;
+    height: 40px;
+  }
+
+  #panel {
+    display: none;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  #panel-editor {
+    display: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .btn-info{
+    background: url(/img/info.png) no-repeat top right;
+        width: 36px;
+        height: 36px;
+  }
+  .btn-edit{
+    background: url(/img/edit.png) no-repeat top right;
+        width: 36px;
+        height: 36px;
+  }
+  .btn-trash{
+    background: url(/img/trash.png) no-repeat top right;
+        width: 36px;
+        height: 36px;
+  }
+  .btn-reload{
+    background: url(/img/reload.png) no-repeat top right;
+        width: 36px;
+        height: 36px;
+  }
+
+  .btn-apply{
+    background: url(/img/apply.png) no-repeat top right;
+        width: 36px;
+        height: 36px;
+  }
+
+  #editP{
+    margin:auto;
+  }
+
+
+  .panel-btn{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  #label-edit{
+    display: none;
+  }
+  .file {
+    display: none; /* скрыт по умолчанию */
+    /* темный фон при открытии модалки должен быть на всю страницу */
+    position: fixed; 
+    z-index: 1; /* поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100vw; /* полная ширина */
+    height: 100vh; /* полная высота */
+    background-color: rgba(0,0,0,0.4); /* цвет фона - прозрачный черный */
+  }
+
+  .info-file{
+    display:none;
+  }
+
+  
+  
+  /* само модальное окно с контентом */
+  .info-file {
+    background-color: #fff;
+    /* окно будет находится по центру по горизонтали и с отступом сверху в 100 px */
+    margin: 100px auto; 
+    padding: 20px;
+    width: 50%; 
+    font-size: 20px;
+    /* разнесем текст и кнопоку по краям окна */
+    display: block;
+    justify-content: space-between;
+   }
+
+   a{
+    text-decoration: none;
+   }
+  
+
+  
