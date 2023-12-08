@@ -5,6 +5,7 @@ include_once './Controllers/Admin.php';
 $role = Admin::adminRole($_SESSION['email']);
 Admin::check();
 ?>
+<!DOCTYPE html>
 <html>
 
 <head>

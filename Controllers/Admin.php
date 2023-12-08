@@ -12,8 +12,8 @@ class Admin
     public function __construct($connection, $email, $password, $role, $name, $id)
     {
         $dbinfo = require './config/db.php';
-        // self::$connection = new PDO("mysql:host=localhost;dbname=cloude_storage;charset=utf8", 'root', 'Dkflbvbh2011');
-        self::$connection = new PDO('mysql:host=' . $dbinfo['host'] . ';dbname=' . $dbinfo['dbname'] . ';charset=' . $dbinfo['charset'], $dbinfo['login'], $dbinfo['password']);
+        self::$connection = new PDO("mysql:host=localhost;dbname=cloude_storage;charset=utf8", 'root', 'Dkflbvbh2011');
+        // self::$connection = new PDO('mysql:host=' . $dbinfo['host'] . ';dbname=' . $dbinfo['dbname'] . ';charset=' . $dbinfo['charset'], $dbinfo['login'], $dbinfo['password']);
         self::$email = $email;
         self::$password = $password;
         self::$role = $role;
@@ -27,8 +27,8 @@ class Admin
         if (self::$connection === null) {
             try {
                 $dbinfo = require './config/db.php';
-                // self::$connection = new PDO("mysql:host=localhost;dbname=cloude_storage;charset=utf8", 'root', 'Dkflbvbh2011');
-                self::$connection = new PDO('mysql:host=' . $dbinfo['host'] . ';dbname=' . $dbinfo['dbname'] . ';charset=' . $dbinfo['charset'], $dbinfo['login'], $dbinfo['password']);
+                self::$connection = new PDO("mysql:host=localhost;dbname=cloude_storage;charset=utf8", 'root', 'Dkflbvbh2011');
+                // self::$connection = new PDO('mysql:host=' . $dbinfo['host'] . ';dbname=' . $dbinfo['dbname'] . ';charset=' . $dbinfo['charset'], $dbinfo['login'], $dbinfo['password']);
             } catch (\PDOException $exception) {
                 exit;
             }
@@ -59,7 +59,7 @@ class Admin
     {
         self::check();
         if (self::$role == 'Administrator') {
-            $listData = self::getConnect()->prepare("SELECT id,email, name,date_created FROM user");
+            $listData = self::getConnect()->prepare("SELECT * FROM user");
             $listData->execute();
             $arrayAll = $listData->fetchAll(PDO::FETCH_ASSOC);
             return $arrayAll;
@@ -99,10 +99,14 @@ class Admin
         if (self::adminRole()->role == 'Administrator') {
             echo 'У вас нет прав на данное действие';
         } else {
+            $name = $_COOKIE['name'];
+            $email = $_COOKIE['email'];
+            $password = $_COOKIE['password'];
+            $role = $_COOKIE['role'];
             parse_str(file_get_contents('php://input'), $PUT);
-            $email = $PUT['email'];
-            $role = $PUT['role'];
-            $name = $PUT['name'];
+            // $email = $PUT['email'];
+            // $role = $PUT['role'];
+            // $name = $PUT['name'];
             $id = $PUT['id'];
             $updateData = self::getConnect()->prepare("Update user set email = :email, role = :role, name = :name WHERE id = :id");
             try {

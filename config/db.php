@@ -9,6 +9,6 @@ return [
     'host' => 'localhost',
     'dbname' => 'cloude_storage',
     'login' => 'root',
-    'password' => '',
+    'password' => 'Dkflbvbh2011',
     'charset' => 'utf8'
 ];

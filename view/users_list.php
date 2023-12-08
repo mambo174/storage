@@ -24,10 +24,15 @@ function countArrays(array $userData)
 }
 
 ?>
+<!DOCTYPE html>
 <html>
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../js/script.js" type="text/javascript">
+
+    </script>
 </head>
 
 <body>
@@ -77,16 +82,34 @@ function countArrays(array $userData)
                     </form>
                 </div>
             </div>
+            <div class="modal-editor">
+                <div class="modal-editor_content">
+                    <span class="btn_close">&times</span>
+                    <form method="put" class='form-content_editor'>
+                        <!-- <input type="hidden" name="_method" value="PUT"> -->
+                        <!-- <input type="submit" role="button" name="submit" value="Сохранить" onclick="safeUser()"> -->
+
+                    </form>
+                </div>
+            </div>
             <div class="col" style="width: 85%; text-align: center">
                 <h3>Список пользователей.</h3>
-                <form method='post'>
-                    <table width="80%" align="center">
-                        <tr>
-                            <td>Номер</td>
-                            <td>Имя</td>
-                            <td>e-mail</td>
-                            <td>Дата создания</td>
-                        </tr>
+                <!-- <div class="row"> -->
+                <div>
+                    <div id="top-panel">
+                        <div id="panel">
+                            <div class="panel-btn"><button class="btn-edit" type='submit' name='all' value='' onclick="editUser()"></button></div>
+                            <div class="panel-btn"><button class="btn-trash" type='submit' name='all' value='' onclick="del()"></button></div>
+                        </div>
+                    </div>
+                    <div class="list-user">
+                        <ul class="user_list_header">
+                            <li>Выбрать</li>
+                            <li>e-mail</li>
+                            <li>Имя</li>
+                            <li>Роль</li>
+                            <li>Дата создания</li>
+                        </ul>
                         <?php
                         $list = array();
                         $i = 0;
@@ -97,16 +120,10 @@ function countArrays(array $userData)
                                     $email = $userData[$i]['email'];
                                     $name = $userData[$i]['name'];
                                     $createDate = $userData[$i]['date_created'];
-                                    echo "
-                        <tr>
-                        
-                            <td><input type=\"text\" name=\"id\" value=" . $id . "></td>
-                            <td><input type=\"text\" name=\"editName\" value=" . $name . "></td>
-                            <td><input type=\"text\" name=\"editEmail\"value=" . $email . "></td>
-                            <td><input type=\"text\" name=\"editCreateDate\"value=" . $createDate . "></td>
-                            <td><input type=\"submit\" name=\"/admin/user/" . $id . "\" value=\"Редактировать\"><input type=\"submit\" name=\"/admin/user/" . $id . "\" value=\"Удалить\"></td>                                                      
-                            </form>
-                        </tr>";
+                                    $role = $userData[$i]['role'];
+                                    // echo "<form method='PUT' action='/admin/user/" . $id . "'><div id='label' ><ul class='user_list' ><li><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $id . "'></li><li>" . $email . "</li><li>" . $name . "</li><li>" . $createDate . "</li></ul></div></form>";
+                                    echo "<div id='label' ><ul class='user_list' ><li><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $id . "'></li><li id='email'>" . $email . "</li><li id='name'>" . $name . "</li><li id='role'>" . $role . "</li><li id='createDate'>" . $createDate . "</li></ul></div>";
+
                                     $i++;
                                 }
                             }
@@ -117,19 +134,17 @@ function countArrays(array $userData)
                                     $email = $userData[$i]['email'];
                                     $name = $userData[$i]['name'];
                                     $createDate = $userData[$i]['date_created'];
-                                    echo "
-                        <tr>
-                        <td>" . $id . "</td>
-                        <td>" . $name  . "</td>
-                        <td>" . $email . "</td>
-                        <td>" . $createDate . "</td>                        
-                        </tr>";
+                                    $role = $userData[$i]['role'];
+                                    echo "<ul class='user_list'><li>" . $id . "</li><li>" . $email . "</li><li>" . $name . "</li><li id='name'>" . $role . "</li><li>" . $createDate . "</li></ul>";
+
                                     $i++;
                                 }
                             }
                         }
                         ?>
-                    </table>
+                        <!-- </table> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>

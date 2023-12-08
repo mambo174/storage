@@ -35,8 +35,8 @@ $urlList = [
     '/logout' => ['GET' => 'User::logout'],
     '/reset_password' => ['GET' => 'User::reset_password'],
     '/reset_password/{hash}' => ['GET' => 'User::newPassword'],
-    '/admin/user' => ['GET' => 'Admin::showUsers', 'PUT' => 'Admin::updateUser'],
-    '/admin/user/{id}' => ['GET' => 'Admin::showUsersId', 'DELETE' => 'Admin::destroyUserId'],
+    '/admin/user' => ['GET' => 'Admin::showUsers'],
+    '/admin/user/{id}' => ['GET' => 'Admin::showUsersId', 'DELETE' => 'Admin::destroyUserId', 'PUT' => 'Admin::updateUser'],
     '/file' => ['GET' => 'FilesStorage::listFiles', 'POST' => 'FilesStorage::addFile'],
     '/file/{id}' => ['GET' => 'FilesStorage::showDataFile', 'DELETE' => 'FilesStorage::destroyFile', 'PUT' => 'FilesStorage::renameFile'],
     '/directory' => ['POST' => 'FilesStorage::addDirectory', 'PATCH' => 'FilesStorage::renameDirectory'],
@@ -115,6 +115,17 @@ switch ($paramUrl) {
                 //                session_start();
                 require('view/users_list.php');
                 //                $value();
+            }
+        }
+        break;
+
+    case '/admin/user/{id}':
+        foreach ($url as $key => $value) {
+            if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+                //                session_start();
+                // require('view/users_list.php');
+                // $value();
+                Admin::updateUser();
             }
         }
         break;
