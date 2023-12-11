@@ -67,9 +67,12 @@ if (preg_match("/\/user\/[1-9]/u", $_SERVER['REDIRECT_URL'])) {
 switch ($paramUrl) {
     case '/user':
         foreach ($url as $key => $value) {
-            if ($_SERVER['REQUEST_METHOD'] == $key) {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $value($id);
                 // require('view/users_list.php');
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                User::addUser();
+                require('view/users_list.php');
             }
         }
         break;

@@ -69,16 +69,17 @@ class User
 
     public static function addUser()
     {
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $role = $_POST['role'];
-        $name = $_POST['name'];
+        $email = $_POST['new_email'];
+        $password = password_hash($_POST['new_pass'], PASSWORD_BCRYPT);
+        $role = $_POST['new_group'];
+        $name = $_POST['new_login'];
         $insertData = self::getConnect()->prepare("INSERT INTO `user`(`id`, `email`, `password`, `role`, `name`, `date_created`) VALUES (null,:email,:password,:role,:name,:date_created)");
         try {
             $insertData->execute(['email' => $email, 'password' => $password, 'role' => $role, 'name' => $name, 'date_created' => (new \DateTime())->format('Y-m-d H:i:s')]);
         } catch (\Exception $e) {
             // self::getConnect()->rollBack();
         }
+        header('Location: /admin/user');
     }
 
 

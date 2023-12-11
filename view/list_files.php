@@ -28,7 +28,7 @@ Admin::check();
 
 <head>
     <title>Список файлов - Облачное хранилище учебного заведения</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../style/bootstrap.css" rel="stylesheet">
     <style type="text/css" media="all">
         @import url("/style/style.css");
     </style>
@@ -54,43 +54,41 @@ Admin::check();
         ?>
         <li class="nav-item"><a class="nav-link" href="/file">Список файлов</a></li>
     </ul>
-    <div class="container">
+    <div class="container col-lg-10">
         <div class="row row-new align-items-start">
+            <div class="col-lg-2">
+                <button class="btn_open btn btn-primary col-lg-12 mb-3 " id="closeModal">+</button>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span>Профиль</span>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/logout" method="get">
+                            <ul class="list-group">
+                                <?php
+                                $profileData = User::profile();
+                                foreach ($profileData as $keyAll => $data) {
+                                    $email = $data['email'];
+                                    $name = $data['name'];
+                                    $role = $data['role'];
+                                    $createDate = $data['date_created'];
+                                    echo "
+                    <li class='list-group-item profile'><span> Имя: </span>" . $name . "
+                    <li class='list-group-item profile'><span> Регистрации: </span>" . $createDate . "
+                    <li class='list-group-item profile'><span> Роль: </span>" . $role . "";
+                                }
+                                ?>
 
-            <div class="col-4 profile">
-                <button class="btn_open" id="closeModal">+</button>
-                <div style=" text-align: center;">
-                    <h3>Профиль</h3>
-                </div>
-                <div style="text-align: left">
-                    <table>
-                        <?php
-                        $profileData = User::profile();
-                        foreach ($profileData as $keyAll => $data) {
-                            $id = $data['id'];
-                            $email = $data['email'];
-                            $name = $data['name'];
-                            $role = $data['role'];
-                            $createDate = $data['date_created'];
-                            echo "
-                    <tr>
-                        <td>Имя</td><td>" . $name . "</td>
-                    </tr>
-                    <tr>
-                        <td>Регистрация</td><td>" . $createDate . "</td>
-                    </tr>
-                    <tr>
-                        <td>Роль</td><td>" . $role . "</td>
-                    </tr>";
-                        }
-                        ?>
-
-                    </table>
-
-                    <input type="submit" name=\"/logout"\ onclick="logout()" value="Выйти">
+                            </ul>
+                            <div class="float-right mt-2">
+                                <button class="btn btn-primary btn-sm" type="submit" name=\"/logout"\ value="Выйти">Выйти</button>
+                            </div>
+                    </div>
+                    </form>
                 </div>
 
             </div>
+
             <div class="modal-editor">
                 <div class="modal-editor_content">
                     <span class="btn_close">&times</span>
@@ -103,22 +101,45 @@ Admin::check();
             </div>
 
             <div class="modal">
-                <div class="modal-content">
-                    <span class="btn_close">&times</span>
+                <div class="modal-content col-6">
+                    <span class="btn_close float-right">&times</span>
+                    <div class="mb-4">
 
-                    <form method="POST" action="/file" class="col" id="formFile" style="width: 85%; text-align: left;" enctype="multipart/form-data">
-                        <h3>Загрузить файл</h3>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-                        <input class="form-control" type="file" name="formFile" id="formFile" /></p>
-                        <p><input class="btn btn-primary me-md-2" type="submit" role="button" name="submit" value="Загрузить">
-                        </p>
-                    </form>
+                        <form method="POST" action="/file" class="col" id="formFilegroup" style="width: 85%; text-align: left;" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Загрузить файл</span>
+                                </div>
 
-                    <form action="/directory" method="post" id="formFile">
-                        <h5>Создать папку</h5>
-                        <input style="width: 200px" type="text" name="add_dir">
-                        <input class="btn btn-primary me-md-2" role="button" type="submit" value="Создать папку">
-                    </form>
+                                <div class="custom-file">
+                                    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="2000000" /> -->
+                                    <input class="custom-file-input" type="file" name="formFile" id="formFile" aria-describedby="formFilegroup" value="Обзор" />
+                                    <label class="custom-file-label" for="formFile">Выберите файл</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <input class="btn btn-outline-secondary" type="submit" id="formFilegroup" name="submit" value="Загрузить">
+                                </div>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                    <div>
+
+                        <form action="/directory" method="post" id="formFile">
+                            <div class="input-group mb-4 margin-left">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Создать папку</span>
+                                </div>
+                                <input type="text" class="form-control col-6" maxlength="20" name="add_dir" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <input class="btn btn-outline-secondary" role="button" type="submit" id="button-addon2" value="Создать папку">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -130,11 +151,11 @@ Admin::check();
                 </div>
                 <div class="edit-file"></div>
             </div>
-            <div class="row">
-                <div id="top-panel">
+            <div class="row col-lg-9">
+                <div id="top-panel ">
                     <div id="panel">
                         <div class="panel-btn">
-                            <input class="btn-info" type='button' name='all' value='' onclick="info()" />
+                            <button class="btn-info" type='button' name='all' value='' onclick="info()" /></button>
                         </div>
                         <div class="panel-btn"><button class="btn-edit" type='submit' name='all' value='' onclick="edit()"></button></div>
                         <div class="panel-btn"><button class="btn-trash" type='submit' name='all' value='' onclick="del()"></button></div>
@@ -144,9 +165,9 @@ Admin::check();
                         </div> -->
                     </div>
                 </div>
-                <div class="list-file">
+                <div class="list-file col-lg-12 position-static">
 
-                    <ul class="list-group">
+                    <ul class="list-group mt-10">
 
                         <?php
                         $dirNum = str_replace('directory/', '', $_GET['id']);
@@ -159,10 +180,10 @@ Admin::check();
 
                                 if (preg_match("/[.][a-zA-Z1-9]/u", $data['name_files'])) {
                                     // echo "<form method='PUT' action='/file/" . $data['id'] . "'><div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div></form>";
-                                    echo "<div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
+                                    echo "<div id='label'><li class='list-group-item pl-5'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
                                 } else {
                                     // echo "<form method='PUT' action='/file/" . $data['id'] . "'><div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'> " . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value=''></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div></form>";
-                                    echo "<div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'> " . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value=''></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
+                                    echo "<div id='label'><li class='list-group-item pl-5'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'> " . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value=''></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
                                 }
                             }
                         } else {
@@ -173,10 +194,10 @@ Admin::check();
 
                                 if (preg_match("/[.][a-zA-Z1-9]/u", $data['name_files'])) {
                                     // echo "<form method='PUT' action='/file/" . $data['id'] . "'><div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div></form>";
-                                    echo "<div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
+                                    echo "<div id='label'><li class='list-group-item pl-5'><p id='editP' contenteditable='false'><input class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='./files/" . $data['new_name_files'] . "' download='" . $data['name_files'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
                                 } else {
                                     // echo "<form method='PUT' action='/file/" . $data['id'] . "'><div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div></form>";
-                                    echo "<div id='label'><li class='list-group-item'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
+                                    echo "<div id='label'><li class='list-group-item pl-5'><p id='editP' contenteditable='false'><input  class='form-check-input me-1' type='checkbox' id='id' onclick='check();' name='fileId' value='" . $data['id'] . "'><a href='/directory/" . $data['id'] . "'>" . $data['name_files'] . "</a></p></li><div id='panel-editor'><button class='btn-apply' type='submit' name='all' value='' ></button><button class='btn-reload' type='submit' name='all' value='' onclick='location.reload(); return false;'></button></div></div>";
                                 }
                             }
                         }

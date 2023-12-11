@@ -5,6 +5,11 @@ include_once './Controllers/files.php';
 
 <html>
 
+<head>
+    <link href="../style/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
 
 <body>
 

@@ -46,18 +46,47 @@
         function check() {
             var panel = document.querySelector('#panel');
             var checkboxes = document.querySelectorAll('input[type="checkbox"]')
-            var panelEditor = document.querySelector('#panel-editor');
+            // var panelEditor = document.querySelector('#panel-editor');
+            var listFile= document.querySelectorAll('.list-file');
+            
             for (var checkbox of checkboxes) {
 
                 if (checkbox.checked) {
-                    panel.style.display = 'flex'
+                    panel.style.display = 'flex';
+                    listFile[0].style.marginTop ='11px';   
+                    
                     break;
                 } else {
                     panel.style.display = 'none'
                     panelEditor.style.display = 'none';
                     checkbox.parentElement.contentEditable = "false";
+                    listFile[0].style.marginTop ='52px';   
                 }
             }
+             
+        }
+
+        function checkUser() {
+            var panel = document.querySelector('#panel');
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+            // var panelEditor = document.querySelector('#panel-editor');
+            var listFile= document.querySelectorAll('.list-file');
+            
+            for (var checkbox of checkboxes) {
+
+                if (checkbox.checked) {
+                    panel.style.display = 'flex';
+                    // listFile[0].style.marginTop ='11px';   
+                    
+                    break;
+                } else {
+                    panel.style.display = 'none'
+                    // panelEditor.style.display = 'none';
+                    checkbox.parentElement.contentEditable = "false";
+                    // listFile[0].style.marginTop ='52px';   
+                }
+            }
+             
         }
 
         function editUser() {
@@ -237,6 +266,29 @@
 
                     // window.open('/file/' + checkbox.value, '_blank').focus
                     fetch('/file/' + checkbox.value, {
+                        method: 'DELETE',
+                    })
+                }
+
+            }
+            window.location.reload(1)
+
+        }
+
+        function delUser() {
+            var chbox;
+            chbox = document.getElementById('id');
+            // var file = document.querySelector('.file')
+            var info = document.querySelectorAll('.btn-trash');
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]')
+
+            for (var checkbox of checkboxes) {
+                // for (i = 0; i < checkboxes.length; i++) {
+
+                if (checkbox.checked) {
+
+                    // window.open('/file/' + checkbox.value, '_blank').focus
+                    fetch('/user/' + checkbox.value, {
                         method: 'DELETE',
                     })
                 }

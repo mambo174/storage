@@ -3,6 +3,7 @@
 
 <head>
     <title>Добро пожаловать в облачное хранилище учебного заведения</title>
+    <link href="../style/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
